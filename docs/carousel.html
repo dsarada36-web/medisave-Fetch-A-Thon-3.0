@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MediSave — LinkedIn carousel</title>
+<style>
+  :root{
+    --navy:#0B1F3A;--navy-2:#122A4D;--mint:#3DF2C4;--white:#F7FAFF;
+    --muted:#9DB2CE;--line:rgba(157,178,206,.28);
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{background:#05080f;font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:var(--white);padding:36px 0 90px;}
+  .howto{width:1080px;margin:0 auto 28px;color:#B9C9DE;font-size:15px;line-height:1.65;border:1px solid var(--line);border-radius:14px;padding:18px 22px;background:#0a1220;}
+  .howto b{color:var(--mint);}
+  .howto button{margin-top:12px;background:var(--mint);color:#052018;border:0;border-radius:8px;padding:10px 16px;font-weight:700;cursor:pointer;font-size:14px;}
+  body.clean .howto{display:none;}
+  .slide{width:1080px;height:1350px;margin:0 auto 44px;background:var(--navy);position:relative;overflow:hidden;padding:84px 80px 72px;display:flex;flex-direction:column;}
+  .brand{display:flex;align-items:center;gap:12px;font-size:24px;font-weight:800;letter-spacing:-.02em;}
+  .brand .dot{width:14px;height:14px;border-radius:50%;background:var(--mint);}
+  .kicker{font-size:20px;font-weight:700;letter-spacing:.14em;color:var(--mint);text-transform:uppercase;}
+  .footer{margin-top:auto;display:flex;justify-content:space-between;align-items:center;color:var(--muted);font-size:22px;border-top:1px solid var(--line);padding-top:26px;}
+  h1{font-size:88px;line-height:1.03;letter-spacing:-.035em;font-weight:800;margin:34px 0 30px;}
+  h1 .hl{color:var(--mint);}
+  h2{font-size:64px;line-height:1.07;letter-spacing:-.03em;font-weight:800;margin:36px 0 38px;}
+  .sub{font-size:33px;line-height:1.35;color:#D7E3F2;max-width:880px;}
+  .big{font-size:46px;line-height:1.2;font-weight:800;color:var(--mint);word-break:break-all;margin:10px 0 22px;}
+  .drug{border-top:1px solid var(--line);padding:26px 0;display:flex;justify-content:space-between;align-items:center;gap:20px;}
+  .drug b{display:block;font-size:36px;letter-spacing:-.02em;margin-bottom:6px;}
+  .drug span{font-size:24px;color:#C9D8EA;}
+  .prices{display:flex;gap:26px;align-items:baseline;text-align:right;}
+  .prices span{font-size:28px;color:#C9D8EA;text-decoration:line-through;}
+  .prices em{font-style:normal;font-size:34px;color:var(--mint);font-weight:800;}
+  .total{border-top:2px solid var(--mint);padding-top:24px;display:flex;justify-content:space-between;font-size:28px;font-weight:700;}
+  .total b{color:var(--mint);}
+  .steps{list-style:none;display:flex;flex-direction:column;gap:24px;margin-top:2px;}
+  .steps li{display:flex;gap:26px;border-top:1px solid var(--line);padding-top:24px;}
+  .steps .num{font-size:26px;font-weight:800;color:var(--mint);min-width:58px;letter-spacing:.04em;}
+  .steps b{display:block;font-size:36px;letter-spacing:-.02em;margin-bottom:6px;}
+  .steps p{font-size:26px;line-height:1.35;color:#C9D8EA;}
+  .sheet{background:#fff;color:var(--navy);border-radius:10px;padding:28px 30px;width:100%;box-shadow:0 24px 70px rgba(0,0,0,.4);}
+  .sheet-title{font-size:16px;font-weight:800;letter-spacing:.08em;margin-bottom:16px;}
+  .row{display:grid;grid-template-columns:1.6fr 1.8fr 1fr 1fr;gap:8px;padding:11px 0;border-top:1px solid #E3EAF4;font-size:19px;color:#233B5A;}
+  .row.head{font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:#5F7592;border-top:0;padding-bottom:4px;}
+  .row.total{font-weight:800;border-top:2px solid var(--navy);font-size:20px;}
+  .sheet-note{margin-top:18px;background:#E9FBF6;border:1px solid #B9F3E1;border-radius:8px;padding:12px 14px;font-size:19px;font-weight:700;color:#064E3B;}
+  .callouts{display:flex;gap:18px;margin-top:24px;}
+  .callout{flex:1;border:1px solid var(--line);border-radius:10px;padding:14px 16px;font-size:19px;line-height:1.35;color:#D7E3F2;}
+  .callout b{display:block;color:var(--mint);font-size:26px;margin-bottom:4px;}
+  .badge{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:16px 24px;font-size:23px;color:#D7E3F2;margin-top:12px;}
+  @media print{
+    body{background:#fff;padding:0;}
+    .howto{display:none;}
+    .slide{margin:0;page-break-after:always;}
+    @page{size:1080px 1350px;margin:0;}
+  }
+</style>
+</head>
+<body>
+
+<div class="howto">
+  <b>How to export:</b> open this file in Chrome. DevTools → Toggle device toolbar → set
+  <b>1080 × 1350</b> → capture each slide. Or click “Print / Save as PDF” and print at 100%.
+  <br><button onclick="window.print()">Print / Save as PDF</button>
+  <button id="clean" style="background:#1B3559;color:#D7E3F2;">Hide instructions</button>
+</div>
+
+<main>
+  <!-- 1 -->
+  <section class="slide">
+    <div class="brand"><span class="dot"></span>medisave</div>
+    <div class="kicker" style="margin-top:70px;">Fetch-A-Thon 3.0 · Team fetchathon3.0-1624</div>
+    <h1>₹1,850 a month for three medicines. The same molecules: <span class="hl">₹620</span>.</h1>
+    <p class="sub">We're building an agent that turns a prescription into a savings sheet — inside one chat.</p>
+    <div class="footer"><span>ASI:One · Agentverse</span><span>01 / 05</span></div>
+  </section>
+
+  <!-- 2 -->
+  <section class="slide">
+    <div class="brand"><span class="dot"></span>medisave</div>
+    <h2>The brand is not the medicine.<br>The molecule is.</h2>
+    <div class="drug">
+      <div><b>Telma 40</b><span>Telmisartan 40 mg</span></div>
+      <div class="prices"><span>₹700</span><em>₹240</em></div>
+    </div>
+    <div class="drug">
+      <div><b>Atorva 10</b><span>Atorvastatin 10 mg</span></div>
+      <div class="prices"><span>₹600</span><em>₹200</em></div>
+    </div>
+    <div class="drug">
+      <div><b>Pan 40</b><span>Pantoprazole 40 mg</span></div>
+      <div class="prices"><span>₹550</span><em>₹180</em></div>
+    </div>
+    <div class="total"><span>Monthly total</span><span><b>₹1,850 → ₹620</b></span></div>
+    <div class="footer"><span>Indicative demo prices</span><span>02 / 05</span></div>
+  </section>
+
+  <!-- 3 -->
+  <section class="slide">
+    <div class="brand"><span class="dot"></span>medisave</div>
+    <h2>One chat. Four steps.</h2>
+    <ol class="steps">
+      <li><span class="num">01</span><div><b>Describe</b><p>“Telma 40, Atorva 10, Pan 40 — ₹1,850 a month.”</p></div></li>
+      <li><span class="num">02</span><div><b>Match</b><p>Brand → molecule → Jan Aushadhi indicative price.</p></div></li>
+      <li><span class="num">03</span><div><b>Save</b><p>Monthly and annual saving, on one sheet.</p></div></li>
+      <li><span class="num">04</span><div><b>Locate</b><p>Nearest Kendra + questions for your doctor.</p></div></li>
+    </ol>
+    <div class="footer"><span>Not medical advice. Price transparency.</span><span>03 / 05</span></div>
+  </section>
+
+  <!-- 4 -->
+  <section class="slide">
+    <div class="brand"><span class="dot"></span>medisave</div>
+    <h2>A sheet you can act on.</h2>
+    <div class="sheet">
+      <div class="sheet-title">MEDISAVE — INDICATIVE SAVINGS SHEET</div>
+      <div class="row head"><span>Brand</span><span>Molecule</span><span>Brand</span><span>JA</span></div>
+      <div class="row"><span>Telma 40</span><span>Telmisartan</span><span>₹700</span><span>₹240</span></div>
+      <div class="row"><span>Atorva 10</span><span>Atorvastatin</span><span>₹600</span><span>₹200</span></div>
+      <div class="row"><span>Pan 40</span><span>Pantoprazole</span><span>₹550</span><span>₹180</span></div>
+      <div class="row total"><span>Total</span><span></span><span>₹1,850</span><span>₹620</span></div>
+      <div class="sheet-note">Saving ₹1,230 / month · ₹14,760 / year</div>
+    </div>
+    <div class="callouts">
+      <div class="callout"><b>₹1,230</b>per month</div>
+      <div class="callout"><b>₹14,760</b>per year</div>
+      <div class="callout"><b>Ask</b>your doctor first</div>
+    </div>
+    <div class="footer"><span>Same molecules. Visible prices.</span><span>04 / 05</span></div>
+  </section>
+
+  <!-- 5 -->
+  <section class="slide">
+    <div class="brand"><span class="dot"></span>medisave</div>
+    <div class="kicker" style="margin-top:90px;">Building at Fetch-A-Thon 3.0</div>
+    <h1 style="font-size:76px;">Same molecules.<br><span class="hl">Visible prices.</span></h1>
+    <p class="big">github.com/&lt;your-handle&gt;/medisave</p>
+    <p class="sub">Repo + 60-second demo in the comments.</p>
+    <div class="badge">Team fetchathon3.0-1624 · Presidency University</div>
+    <div class="footer"><span>MediSave · ASI:One · Agentverse</span><span>05 / 05</span></div>
+  </section>
+</main>
+
+<script>
+  document.getElementById('clean').addEventListener('click', function () {
+    document.body.classList.toggle('clean');
+  });
+</script>
+</body>
+</html>

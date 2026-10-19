@@ -1,0 +1,7 @@
+# v0 savings engine has no runtime dependencies.
+# The ACP agent and PDF layer (next commit) use:
+uagents==0.25.5
+uagents-core
+openai
+python-dotenv
+reportlab

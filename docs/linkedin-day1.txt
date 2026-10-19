@@ -1,0 +1,19 @@
+In our test case, three chronic medicines cost ₹1,850 a month. The same molecules at Jan Aushadhi prices: ₹620.
+
+We're building MediSave — an ASI:One agent that turns a prescription into a savings sheet: the molecule, the generic/Jan Aushadhi price, the nearest Kendra, and the questions to ask your doctor.
+
+Not medical advice. Price transparency.
+
+Why an agent: it has to parse the prescription, map brands to molecules, compute the monthly saving, find the Kendra, and produce a document — in one chat.
+
+Stack: Agentverse, Agent Chat Protocol, ASI:One Interactive Cards, ASI1.
+
+Building at Fetch-A-Thon 3.0 @ Presidency University, Bengaluru.
+
+Repo: [GitHub link]
+
+If you buy medicines every month, what would make a savings sheet useful to you?
+
+@Fetch.ai @Fetch.ai Innovation Lab @Agentverse @Presidency University @GDG on Campus Presidency University
+
+#FetchAI #Agentverse #ASIOOne #AgenticAI #BuildInPublic #MediSave
